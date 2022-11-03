@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css" type="text/css">
+  <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+  <link rel="icon" href="images/NBA.jpg" width="32px" />
+
+
+  <title>NBA Shop</title>
+</head>
+
+<body onload="getCartItems()">
+  <ul class="skip-links">
+    <li><a href="#main_nav">Skip to navigation</a></li>
+    <li><a href="#form">Skip to the main content</a></li>
+  </ul>
+  <header>
+    <main class="brandheader">
+      <img src="images/logo.jpg" alt="logo" class="homeLogo">
+      <h1>UNOFFICIAL STORE</h1>
+    </main>
+    <h2>NBA Jerseys</h2>
+    <nav id="main_nav">
+      <a href="index.html">Home</a>
+      <a href="lakers.html">Lakers</a>
+      <a href="bulls.html">Bulls</a>
+      <a href="recomendations.html">Customer reviews</a>
+      <a href="form.html">Contact Us</a>
+      <a href="cart.html">
+        <ion-icon name="basket"></ion-icon>Cart <span id="cartLenght">0</span>
+      </a>
+    </nav>
+  </header>
+  <main id="mainFormWrapper">
+    <h2>Customer Information</h2>
+    <form onsubmit="ShowPicture();return false;" id="form">
+      <fieldset>
+        <legend>Jersey Size</legend>
+        <input type="radio" name="size" value="small" class="sizes">
+        <label for="Small">Small</label>
+        <input type="radio" name="size" value="medium" class="sizes">
+        <label for="Medium">Medium</label>
+        <input type="radio" name="size" value="large" class="sizes">
+        <label for="Large">Large</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Choose your Basketball Team</legend>
+        <input type="radio" class="teamNames" name="teamNames" value="lakers">
+        <label for="Lakers">Lakers</label>
+        <input type="radio" class="teamNames" value="bulls" name="teamNames">
+        <label for="Bulls">Bulls</label>
+        <input type="radio" class="teamNames" name="teamNames" disabled id="Celtics">
+        <label for="Celtics">Celtics</label>
+        <input type="radio" class="teamNames" name="teamNames" disabled id="Raptors">
+        <label for="Raptors">Raptors</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Choose your Jersey Price</legend>
+        <input value="82" type="radio" name="shirtPrice" class="shirtPrice">
+        <label for="82">£82.00</label>
+        <input value="105" type="radio" name="shirtPrice" class="shirtPrice">
+        <label for="105">£105</label>
+        <input value="99" type="radio" name="shirtPrice" class="shirtPrice">
+        <label for="99">£99.00</label>
+        <input value="91" type="radio" name="shirtPrice" class="shirtPrice">
+        <label for="91">£91.00</label>
+        <input value="66" type="radio" name="shirtPrice" class="shirtPrice">
+        <label for="66">£66.00</label>
+        <input value="80" type="radio" name="shirtPrice" class="shirtPrice">
+        <label for="80">£80.00</label>
+        <input value="250" type="radio" name="shirtPrice" class="shirtPrice">
+        <label for="250">£250.00</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Fill This Information</legend>
+        <label>
+          Country
+          <select name="position" required>
+            <option value="Select Your Country" selected></option>
+            <option value="Sp">Spain</option>
+            <option value="Us">USA</option>
+            <option value="Jp">Japan</option>
+            <option value="Aus">Australia</option>
+            <option value="UK">United Kindgdom</option>
+            <option value="Ca">Canada</option>
+          </select>
+        </label>
+
+        <label>
+          Quantity
+          <input name="exp" required placeholder="Product Quantity" type="number">
+        </label>
+      </fieldset>
+
+
+      <fieldset>
+        <legend>Your Full Nme</legend>
+        <label for="firstname">First Name</label>
+        <input type="text" name="firstname" id="firstname" required placeholder="First Name">
+        <label for="lastname">Last Name</label>
+        <input type="text" name="lastname" id="lastname" required placeholder="Last Name">
+      </fieldset>
+
+      <fieldset>
+        <legend>Type your email addres</legend>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required placeholder="Email">
+        <label for="coments">Comments</label>
+        <textarea type="text" name="coments" id="coments" required placeholder="Send us a message"></textarea>
+      </fieldset>
+
+      <br />
+
+      <button type="submit">Submit</button>
+    </form>
+    <section>
+      <h2>Payment information</h2>
+      <p>
+        <label for="card">
+          <span>Card type:</span>
+        </label>
+        <select id="card" name="usercard">
+          <option value="visa">Visa</option>
+          <option value="mc">Mastercard</option>
+          <option value="amex">American Express</option>
+        </select>
+      </p>
+      <p>
+        <label for="number">
+          <span>Card number:</span>
+          <strong><abbr title="required">*</abbr></strong>
+        </label>
+        <input type="number" id="number" name="cardnumber">
+      </p>
+      <p>
+        <label for="date">
+          <span>Expiration date:</span>
+          <strong><abbr title="required">*</abbr></strong>
+          <em>formatted as mm/dd/yyyy</em>
+        </label>
+        <input type="date" id="date" name="expiration">
+      </p>
+      <p> <button type="submit">Validate the payment</button> </p>
+    </section>
+  </main>
+
+  <section id="formModlPopupHide">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Flat_cross_icon.svg/1024px-Flat_cross_icon.svg.png"
+      id="formPopupClose" onclick="closeFormPopup()" />
+    <img src="images/anthony.jfif" id="formModlPopupImage" />
+    <span id="modelTeamName"></span>
+    <br />
+    <span id="modelSize"></span>
+    <br />
+    <span id="modelPrice"></span>
+  </section>
+  <footer class="footer">
+    <main class="footer-list">
+      <a href="#" class="footer-link">Home</a>
+      <a href="#" class="footer-link">Lakers</a>
+      <a href="#" class="footer-link">Bulls</a>
+      <a href="#" class="footer-link">Customer reviews</a>
+      <a href="#" class="footer-link">Contact us</a>
+    </main>
+  </footer>
+  <script src="main.js" type="text/javascript"></script>
+  <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+</body>
+
+</html>
